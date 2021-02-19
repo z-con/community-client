@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const UserDetail = (props) => {
+const Users = (props) => {
     console.log(props)
-    let [user, setUser] = useState([])
+    let [users, setUsers] = useState([])
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/users`)
             .then((res) => {
-                setUser(res.data)
-                console.log(user)
+                setUsers(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -18,9 +17,14 @@ const UserDetail = (props) => {
 
     return (
         <div>
-            {user && user.map(eachUser => <li>{eachUser.name} </li>)}
+            {users && users.map(eachUser => 
+            <ul>
+                <li>{eachUser.name}</li> 
+                <b>{eachUser.email}</b>
+            </ul>
+            )}
         </div>
     );
 };
 
-export default UserDetail;
+export default Users;

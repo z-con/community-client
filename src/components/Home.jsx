@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Users from "./Users"
+import Posts from "./Posts"
 import Login from "./Login"
 
 export default class Home extends Component {
@@ -9,10 +9,17 @@ export default class Home extends Component {
     let responseFromBackend = await axios.get("http://localhost:5000/api/users");
     console.log(responseFromBackend);
   }
+  
   render() {
     return (
-      <div>
+      <div className="home">
+        <div>
         < Login />
+        </div>
+        <br></br>
+        <div>
+        < Posts />
+        </div>
       </div>
     );
   }
